@@ -4,8 +4,7 @@
 set(0,'DefaultFigureWindowStyle','docked')
 clearvars
 
-%% simulate alpha(lambda) = Eobs(lambda)/Eth with dl = 120 m
-
+%% simulate alpha(lambda) = Eobs(lambda)/Eth and \Delta \phi with dl = 120 m and 30 m
 
 
 V0=300e-3;

@@ -8,40 +8,39 @@ ic=1;%%spacecraft number
 %%time of the waveburst of interest
 T1=irf.tint('2021-01-10T17:27:14.48/2021-01-10T17:27:14.63');
 
-% %%extended time around the waveburst
-% Tint  = T1 +[-1 1];
-% 
-% 
-% 
-% c_eval('Egse=mms.db_get_ts(''mms?_edp_brst_l2_dce'',''mms?_edp_dce_gse_brst_l2'',Tint);',ic);
-% c_eval('Bgse=mms.get_data(''B_gse_brst_l2'',Tint,?);',ic);
-% c_eval('defatt?=mms.db_get_variable(''mms?_ancillary_defatt'',''zra'',Tint);',ic);
-% c_eval('defatt?.zdec=mms.db_get_variable(''mms?_ancillary_defatt'',''zdec'',Tint).zdec;',ic);
-% c_eval('Vi = mms.get_data(''Vi_gse_fpi_brst_l2'',Tint+[-60 60],?);',ic);
-% c_eval('Ne = mms.get_data(''Ne_fpi_brst_l2'',Tint,?);',ic);
-% c_eval('Te = mms.get_data(''Te_gse_fpi_brst_l2'',Tint,?);',ic);
-% c_eval('Ti = mms.get_data(''Ti_gse_fpi_brst_l2'',Tint,?);',ic);
-% 
-% dir=mms.db_list_files('mms1_edp_brst_l2_scpot',T1);dir_name=dir.name;
-% dir=[dir.path '/' dir_name];
-% d=dataobj(dir);
-% d=d.data;
-% V=d.mms1_edp_dcv_brst_l2;V=V.data;V_2=V;
-% Time=d.mms1_edp_epoch_brst_l2;Time=Time.data;
-% SCpot=TSeries(EpochUnix(Time),V);
-% zphase = mms.db_get_variable('mms1_ancillary_defatt','zphase',Tint);
-% 
-% 
-% %% Getting the Zphase in the probes coordinate system (PCS)
-% 
-% zphase=irf.ts_scalar(zphase.time,zphase.zphase);
-% zphase=zphase.tlim(T1+[-1 1]);
-% 
-% 
-% zphase=zphase.resample(Egse)+30;%%resample and make the angle so the inverse rotation align the x direction with probe 1
-% zphase=zphase.tlim(T1);
+%%extended time around the waveburst
+Tint  = T1 +[-1 1];
 
-load('/Users/ahmadlalti/Desktop/Ahmad/data_project2/validate_Efield_data/validate_Efield_data_2021_01_10_T17_27_14_495.mat')
+
+
+c_eval('Egse=mms.db_get_ts(''mms?_edp_brst_l2_dce'',''mms?_edp_dce_gse_brst_l2'',Tint);',ic);
+c_eval('Bgse=mms.get_data(''B_gse_brst_l2'',Tint,?);',ic);
+c_eval('defatt?=mms.db_get_variable(''mms?_ancillary_defatt'',''zra'',Tint);',ic);
+c_eval('defatt?.zdec=mms.db_get_variable(''mms?_ancillary_defatt'',''zdec'',Tint).zdec;',ic);
+c_eval('Vi = mms.get_data(''Vi_gse_fpi_brst_l2'',Tint+[-60 60],?);',ic);
+c_eval('Ne = mms.get_data(''Ne_fpi_brst_l2'',Tint,?);',ic);
+c_eval('Te = mms.get_data(''Te_gse_fpi_brst_l2'',Tint,?);',ic);
+c_eval('Ti = mms.get_data(''Ti_gse_fpi_brst_l2'',Tint,?);',ic);
+
+dir=mms.db_list_files('mms1_edp_brst_l2_scpot',T1);dir_name=dir.name;
+dir=[dir.path '/' dir_name];
+d=dataobj(dir);
+d=d.data;
+V=d.mms1_edp_dcv_brst_l2;V=V.data;V_2=V;
+Time=d.mms1_edp_epoch_brst_l2;Time=Time.data;
+SCpot=TSeries(EpochUnix(Time),V);
+zphase = mms.db_get_variable('mms1_ancillary_defatt','zphase',Tint);
+
+
+%% Getting the Zphase in the probes coordinate system (PCS)
+
+zphase=irf.ts_scalar(zphase.time,zphase.zphase);
+zphase=zphase.tlim(T1+[-1 1]);
+
+
+zphase=zphase.resample(Egse)+30;%%resample and make the angle so the inverse rotation align the x direction with probe 1
+zphase=zphase.tlim(T1);
+
 
 
 %% puting the fields in DSL coordinate system
