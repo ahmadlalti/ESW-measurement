@@ -81,8 +81,8 @@ freq1=logspace(2,3.55,numf);
 wn=2*pi*freq1;
 vph=90e3;Lmda=vph./freq1';
 
-Thb=0:180;
-Phid=0:360;
+Thb=180:-1:0;
+Phid=-180:180;
 k_real = ones(length(Thb),length(Phid),numf,3)*nan;
 k_measured = ones(length(Thb),length(Phid),numf,3)*nan;
 k_maxvar_measured = ones(length(Thb),length(Phid),numf,3)*nan;
