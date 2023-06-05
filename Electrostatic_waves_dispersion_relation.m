@@ -680,9 +680,9 @@ text(h2,0.9,0.85,'(c)','FontSize',fs,'Units','normalized','BackgroundColor','w')
 text(h3,0.9,0.9,'(d)','FontSize',fs,'Units','normalized','BackgroundColor','w');
 text(h4,0.9,0.9,'(e)','FontSize',fs,'Units','normalized','BackgroundColor','w');
 
-IX = find(Lreal<45);
-Lreal(IX) = nan;tkb(IX) = nan;
-kr(:,IX) = nan;
+[iix,jjx] = find(Lreal<45);
+Lreal(iix,jjx) = nan;tkb(iix,jjx) = nan;
+kr(iix,jjx,:) = nan;
 mL = nanmedian(Lreal');
 sL = nanstd(Lreal');
 mtkb = nanmedian(tkb');

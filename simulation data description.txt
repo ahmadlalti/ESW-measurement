@@ -1,0 +1,11 @@
+Description of the variables in the simulation data:%%initializing the wave packetfreq1: frequency components used to generate the simulated wave packet using equation (7) in the manuscript.
+vph: phase velocity of all frequency components of the simulated wave packet
+Lmda: wavelength of each component of the simulated wave packet Lmda = vph/freq1Phid: azimuthal angle of the wave vectors used for the simulated wave packets
+Thb: polar angle of the wave vectors used for the simulated wave packets%%simulating the short wavelength effect (data used to plot figure 2 in the manuscript)l: wavelength 
+alpha120: attenuation factor taking probe to probe separation = 120 m
+phase120: phase shift taking probe to probe separation = 120 m (that of the spin plane probes)
+alpha30: attenuation factor taking probe to probe separation = 28.15 m (that of the axial probes)
+phase30: phase shift taking probe to probe separation = 28.15 m (that of the axial probes)%%results of the method applied to synthetic data (described in section 3.2 of the manuscript)freq_wavelet: frequencies of the wavelet transform done on the spin plane components of the electric field (f_i in step 1 of section 3.2 in the manuscript)k_maxvar_120: maximum variance direction of the uncorrected electric field at each frequency f_i, polar angle Thb, and azimuthal angle Phid.k_maxvar_measured: maximum variance direction of the corrected electric field at each frequency f_i, polar angle Thb, and azimuthal angle Phid.eig_maxvar: the eigenvalues of the maximum variance analysis done on the corrected electric fieldk_measured: Full wavevector (direction and magnitude) obtained by applying the method described in section 3.2 (steps 1 to 3)k_real: Real wavevector (direction and magnitude) used to initialize each wave packet.Note that \theta_rm plotted in Figure6 a and c is the angle between k_measured and k_realAnd that R = \lambda_r/\lambda_m is the ratio |k_real|/|k_measured|
+
+The manuscript is available at:
+https://doi.org/10.48550/arXiv.2211.06221
